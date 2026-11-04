@@ -1,6 +1,12 @@
 import './App.css'
 import { Todolist } from './Todolist.tsx'
 
+export type TaskType = {
+	id: number
+	title: string
+	isDone: boolean
+}
+
 function App() {
 	const todolist = [
 		{

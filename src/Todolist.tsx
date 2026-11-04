@@ -1,12 +1,7 @@
+import { TaskType } from './App.tsx'
 import { Task } from './Task.tsx'
 import { TodolistFilter } from './TodolistFilter.tsx'
 import { TodolistHeader } from './TodolistHeader.tsx'
-
-type TaskType = {
-	id: number
-	title: string
-	isDone: boolean
-}
 
 type TodolistProps = {
 	title: string
@@ -16,7 +11,7 @@ type TodolistProps = {
 export const Todolist = (props: TodolistProps) => {
 	return (
 		<div>
-			<TodolistHeader title={props.title} />
+			<TodolistHeader title={props.title} countTasks={props.tasks.length} />
 			<ul>
 				{props.tasks.map(t => (
 					<Task key={t.id} title={t.title} isDone={t.isDone} />
