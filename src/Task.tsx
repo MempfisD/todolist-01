@@ -3,11 +3,11 @@ type TaskProps = {
 	isDone: boolean
 }
 
-export const Task = (props: TaskProps) => {
+export const Task = ({ title, isDone }: TaskProps) => {
 	return (
 		<li>
-			<input type='checkbox' checked={props.isDone} readOnly />
-			<span>{props.title}</span>
+			<input type='checkbox' checked={isDone} readOnly />
+			<span>{title}</span>
 		</li>
 	)
 }

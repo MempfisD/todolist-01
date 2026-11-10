@@ -1,20 +1,26 @@
+import { useState } from 'react'
 import { TaskType } from './App.tsx'
 import { Task } from './Task.tsx'
 import { TodolistFilter } from './TodolistFilter.tsx'
 import { TodolistHeader } from './TodolistHeader.tsx'
 
-type TodolistProps = {
+type TodolistType = {
+	id: number
 	title: string
 	tasks: TaskType[]
 }
 
-export const Todolist = (props: TodolistProps) => {
+export const Todolist = ({ id, title, tasks }: TodolistType) => {
+	console.log('Todolist rendered')
+	const [counter, setCounter] = useState(0)
+
 	return (
 		<div>
-			<TodolistHeader title={props.title} countTasks={props.tasks.length} />
+			<TodolistHeader title={title} countTasks={tasks.length} />
+			<span onClick={() => setCounter(counter + 1)}>{counter}</span>
 			<ul>
-				{props.tasks.map(t => (
-					<Task key={t.id} title={t.title} isDone={t.isDone} />
+				{tasks.map((task: TaskType) => (
+					<Task key={task.id} title={task.title} isDone={task.isDone} />
 				))}
 			</ul>
 			<TodolistFilter />
